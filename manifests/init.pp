@@ -29,7 +29,6 @@ class ruby {
 		source => "puppet://$servername/ruby/rubygems-1.3.5.tgz",
 		ensure => present,
 	}
-
 	exec { "extract-rubygems-1.3.5":
 		require => File["/opt/rubygems-1.3.5.tgz"],
 		before => [
@@ -41,13 +40,16 @@ class ruby {
 		creates => "/root/rubygems-1.3.5",
 		#unless => "UNLESS WHAT???",
 	}
-
 	# If anything happened in order, each pipinstall would go here
-
 	exec { "remove-rubygems-1.3.5":
 		cwd => "/root",
 		command => "rm -rf rubygems-1.3.5",
 		onlyif => "test -d /root/rubygems-1.3.5",
+	}
+
+	file { "/usr/local/bin/pick-ruby":
+		source => "puppet://$servername/ruby/pick-ruby",
+		ensure => present,
 	}
 
 }
