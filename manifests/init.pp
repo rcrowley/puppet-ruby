@@ -38,14 +38,7 @@ class ruby {
 			Geminstall["rubygems-1.3.5-1.9.1-p243"],
 			Geminstall["rubygems-1.3.5-1.8.7-p174"]
 		],
-		command => "rm -rf /root/rubygems-1.3.5",
-	}
-	exec { "remove-tar-rubygems-1.3.5":
-		require => [
-			Geminstall["rubygems-1.3.5-1.9.1-p243"],
-			Geminstall["rubygems-1.3.5-1.8.7-p174"]
-		],
-		command => "rm -f /root/rubygems-1.3.5.tgz",
+		command => "rm -rf /root/rubygems-1.3.5*",
 	}
 
 	file { "/usr/local/bin/pick-ruby":
