@@ -54,6 +54,7 @@ class ruby::ruby_1_9_1 {
 		tarball => "ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-$version.tar.bz2",
 		prefix => "/opt/ruby-$version",
 		flags => "",
+		bootstrap => "sh -c 'echo -e fcntl\\\\\\\\nopenssl\\\\\\\\nreadline\\\\\\\\nzlib >ext/Setup'",
 	}
 	geminstall { "geminstall-$version": version => "$version" }
 	gem { "rip-$version":
@@ -68,6 +69,7 @@ class ruby::ruby_1_8_7 {
 		tarball => "ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-$version.tar.bz2",
 		prefix => "/opt/ruby-$version",
 		flags => "",
+		bootstrap => "sh -c 'echo -e fcntl\\\\\\\\nopenssl\\\\\\\\nreadline\\\\\\\\nzlib >ext/Setup'",
 	}
 	geminstall { "geminstall-$version": version => "$version" }
 	gem { "rip-$version":
