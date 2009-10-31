@@ -14,6 +14,7 @@ define gem($package, $version) {
 	exec { "gem-exec-$package-$version":
 		require => Geminstall["geminstall-$version"],
 		command => "/opt/ruby-$version/bin/gem install $package",
+		timeout => "-1",
 	}
 }
 
@@ -61,6 +62,10 @@ class ruby::ruby_1_9_1 {
 		package => "rip",
 		version => "$version",
 	}
+	gem { "rails-$version":
+		package => "rails",
+		version => "$version",
+	}
 }
 
 class ruby::ruby_1_8_7 {
@@ -74,6 +79,10 @@ class ruby::ruby_1_8_7 {
 	geminstall { "geminstall-$version": version => "$version" }
 	gem { "rip-$version":
 		package => "rip",
+		version => "$version",
+	}
+	gem { "rails-$version":
+		package => "rails",
 		version => "$version",
 	}
 }
