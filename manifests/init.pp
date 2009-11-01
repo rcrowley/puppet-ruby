@@ -66,6 +66,11 @@ class ruby::ruby_1_9_1 {
 		package => "rails",
 		version => "$version",
 	}
+	gem { "sqlite3-ruby-$version":
+		require => Package["libsqlite3-dev"],
+		package => "sqlite3-ruby",
+		version => "$version",
+	}
 }
 
 class ruby::ruby_1_8_7 {
@@ -83,6 +88,11 @@ class ruby::ruby_1_8_7 {
 	}
 	gem { "rails-$version":
 		package => "rails",
+		version => "$version",
+	}
+	gem { "sqlite3-ruby-$version":
+		require => Package["libsqlite3-dev"],
+		package => "sqlite3-ruby",
 		version => "$version",
 	}
 }
